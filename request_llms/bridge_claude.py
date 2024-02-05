@@ -70,7 +70,7 @@ def predict_no_ui_long_connection(inputs, llm_kwargs, history=[], sys_prompt="",
             # with ProxyNetworkActivate()
             stream = anthropic.completions.create(
                 prompt=prompt,
-                max_tokens_to_sample=4096,       # The maximum number of tokens to generate before stopping.
+                max_tokens_to_sample=4096 * 3,       # The maximum number of tokens to generate before stopping.
                 model=llm_kwargs['llm_model'],
                 stream=True,
                 temperature = llm_kwargs['temperature']
@@ -143,7 +143,7 @@ def predict(inputs, llm_kwargs, plugin_kwargs, chatbot, history=[], system_promp
             # with ProxyNetworkActivate()
             stream = anthropic.completions.create(
                 prompt=prompt,
-                max_tokens_to_sample=4096,       # The maximum number of tokens to generate before stopping.
+                max_tokens_to_sample=4096 * 3,       # The maximum number of tokens to generate before stopping.
                 model=llm_kwargs['llm_model'],
                 stream=True,
                 temperature = llm_kwargs['temperature']

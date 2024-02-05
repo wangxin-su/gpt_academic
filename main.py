@@ -32,7 +32,7 @@ def main():
     from themes.theme import adjust_theme, advanced_css, theme_declaration
     from themes.theme import js_code_for_css_changing, js_code_for_darkmode_init, js_code_for_toggle_darkmode, js_code_for_persistent_cookie_init
     from themes.theme import load_dynamic_theme, to_cookie_str, from_cookie_str, init_cookie
-    title_html = f"<h1 align=\"center\">GPT 学术优化 {get_current_version()}</h1>{theme_declaration}"
+    title_html = f"<h1 align=\"center\">GPT SandStar {get_current_version()}</h1>{theme_declaration}"
     
     # 问询记录, python 版本建议3.9+（越新越好）
     import logging, uuid
@@ -74,7 +74,7 @@ def main():
     cancel_handles = []
     customize_btns = {}
     predefined_btns = {}
-    with gr.Blocks(title="GPT 学术优化", theme=set_theme, analytics_enabled=False, css=advanced_css) as demo:
+    with gr.Blocks(title="GPT SandStar", theme=set_theme, analytics_enabled=False, css=advanced_css) as demo:
         gr.HTML(title_html)
         secret_css, dark_mode, persistent_cookie = gr.Textbox(visible=False), gr.Textbox(DARK_MODE, visible=False), gr.Textbox(visible=False)
         cookies = gr.State(load_chat_cookies())
@@ -153,7 +153,7 @@ def main():
                     md_dropdown = gr.Dropdown(AVAIL_LLM_MODELS, value=LLM_MODEL, label="更换LLM模型/请求源").style(container=False)
                     top_p = gr.Slider(minimum=-0, maximum=1.0, value=1.0, step=0.01,interactive=True, label="Top-p (nucleus sampling)",)
                     temperature = gr.Slider(minimum=-0, maximum=2.0, value=1.0, step=0.01, interactive=True, label="Temperature",)
-                    max_length_sl = gr.Slider(minimum=256, maximum=1024*32, value=4096, step=128, interactive=True, label="Local LLM MaxLength",)
+                    max_length_sl = gr.Slider(minimum=256, maximum=128000, value=4096, step=128, interactive=True, label="Local LLM MaxLength",)
                     system_prompt = gr.Textbox(show_label=True, lines=2, placeholder=f"System Prompt", label="System prompt", value=INIT_SYS_PROMPT)
 
                 with gr.Tab("界面外观", elem_id="interact-panel"):

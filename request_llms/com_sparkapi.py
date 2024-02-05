@@ -203,7 +203,7 @@ def gen_params(appid, inputs, llm_kwargs, history, system_prompt, file_manifest)
                 "domain": domains_select,
                 "temperature": llm_kwargs["temperature"],
                 "random_threshold": 0.5,
-                "max_tokens": 4096,
+                "max_tokens": 4096 * 3,
                 "auditing": "default"
             }
         },

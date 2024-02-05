@@ -173,7 +173,7 @@ def 解析历史输入(history,llm_kwargs,chatbot,plugin_kwargs):
     i_say_show_user = f'首先你从历史记录或文件中提取摘要。'; gpt_say = "[Local Message] 收到。"   # 用户提示
     chatbot.append([i_say_show_user, gpt_say]); yield from update_ui(chatbot=chatbot, history=history)    # 更新UI
     results = []
-    MAX_WORD_TOTAL = 4096
+    MAX_WORD_TOTAL = 40960
     n_txt = len(txt)
     last_iteration_result = "从以下文本中提取摘要。"
     if n_txt >= 20: print('文章极长，不能达到预期效果')

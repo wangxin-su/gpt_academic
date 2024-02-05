@@ -59,7 +59,7 @@ openai_endpoint = "https://api.openai.com/v1/chat/completions"
 api2d_endpoint = "https://openai.api2d.net/v1/chat/completions"
 newbing_endpoint = "wss://sydney.bing.com/sydney/ChatHub"
 if not AZURE_ENDPOINT.endswith('/'): AZURE_ENDPOINT += '/'
-azure_endpoint = AZURE_ENDPOINT + f'openai/deployments/{AZURE_ENGINE}/chat/completions?api-version=2023-05-15'
+azure_endpoint = AZURE_ENDPOINT + f'openai/deployments/{AZURE_ENGINE}/chat/completions?api-version=2023-12-01-preview'
 # 兼容旧版的配置
 try:
     API_URL = get_conf("API_URL")
@@ -91,7 +91,7 @@ model_info = {
         "fn_with_ui": chatgpt_ui,
         "fn_without_ui": chatgpt_noui,
         "endpoint": openai_endpoint,
-        "max_token": 4096,
+        "max_token": 4096 * 10,
         "tokenizer": tokenizer_gpt35,
         "token_cnt": get_token_num_gpt35,
     },
@@ -109,7 +109,7 @@ model_info = {
         "fn_with_ui": chatgpt_ui,
         "fn_without_ui": chatgpt_noui,
         "endpoint": openai_endpoint,
-        "max_token": 4096,
+        "max_token": 4096 * 10,
         "tokenizer": tokenizer_gpt35,
         "token_cnt": get_token_num_gpt35,
     },
@@ -181,7 +181,7 @@ model_info = {
         "fn_with_ui": chatgpt_ui,
         "fn_without_ui": chatgpt_noui,
         "endpoint": openai_endpoint,
-        "max_token": 4096,
+        "max_token": 4096 * 10,
         "tokenizer": tokenizer_gpt4,
         "token_cnt": get_token_num_gpt4,
     },
@@ -190,7 +190,7 @@ model_info = {
         "fn_with_ui": chatgpt_vision_ui,
         "fn_without_ui": chatgpt_vision_noui,
         "endpoint": openai_endpoint,
-        "max_token": 4096,
+        "max_token": 4096 * 10,
         "tokenizer": tokenizer_gpt4,
         "token_cnt": get_token_num_gpt4,
     },
@@ -201,7 +201,7 @@ model_info = {
         "fn_with_ui": chatgpt_ui,
         "fn_without_ui": chatgpt_noui,
         "endpoint": azure_endpoint,
-        "max_token": 4096,
+        "max_token": 4096 * 10,
         "tokenizer": tokenizer_gpt35,
         "token_cnt": get_token_num_gpt35,
     },
@@ -210,7 +210,7 @@ model_info = {
         "fn_with_ui": chatgpt_ui,
         "fn_without_ui": chatgpt_noui,
         "endpoint": azure_endpoint,
-        "max_token": 8192,
+        "max_token": 8192 * 3,
         "tokenizer": tokenizer_gpt4,
         "token_cnt": get_token_num_gpt4,
     },
@@ -638,7 +638,7 @@ if len(AZURE_CFG_ARRAY) > 0:
         if not azure_model_name.startswith('azure'): 
             raise ValueError("AZURE_CFG_ARRAY中配置的模型必须以azure开头")
         endpoint_ = azure_cfg_dict["AZURE_ENDPOINT"] + \
-            f'openai/deployments/{azure_cfg_dict["AZURE_ENGINE"]}/chat/completions?api-version=2023-05-15'
+            f'openai/deployments/{azure_cfg_dict["AZURE_ENGINE"]}/chat/completions?api-version=2023-12-01-preview'
         model_info.update({
             azure_model_name: {
                 "fn_with_ui": chatgpt_ui,

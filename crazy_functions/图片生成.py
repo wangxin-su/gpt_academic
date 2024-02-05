@@ -15,7 +15,7 @@ def gen_image(llm_kwargs, prompt, resolution="1024x1024", model="dall-e-2", qual
     # # Generate the image
     url = img_endpoint
     headers = {
-        'Authorization': f"Bearer {api_key}",
+        'api-key': f"{api_key}",
         'Content-Type': 'application/json'
     }
     data = {

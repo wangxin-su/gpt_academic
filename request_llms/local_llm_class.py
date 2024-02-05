@@ -191,7 +191,7 @@ class LocalLLMHandle(Process):
                 self.clear_pending_messages()
             self.parent.send(kwargs)
             std_out = ""
-            std_out_clip_len = 4096
+            std_out_clip_len = 4096 * 3
             while True:
                 res = self.parent.recv()
                 # pipe_watch_dog.feed()
